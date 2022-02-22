@@ -5,10 +5,12 @@ import EditContact from "./pages/edit-contact/Edit-Contact.compoent";
 import AddContact from "./pages/add-contact/Add-Contact.component";
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NaviBar from "./components/NavBar.component";
 
 function App() {
   return (
     <Fragment>
+      <NaviBar />
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<Homepage />} />
