@@ -12,7 +12,6 @@ function Homepage() {
   for (let i = 0; i < totalCount; i++) {
     profiles.push(JSON.parse(storage[i]));
   }
-  console.log(profiles.length);
   return (
     <Fragment>
       <div className="card">
