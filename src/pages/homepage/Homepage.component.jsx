@@ -1,49 +1,55 @@
 import { Fragment } from "react";
 import React from "react";
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Homepage() {
+  document.title = "Homepage";
+  let totalCount = +sessionStorage.getItem("totalProfileCount");
+
+  const storage = { ...localStorage };
+  let profiles = [];
+  for (let i = 0; i < totalCount; i++) {
+    profiles.push(JSON.parse(storage[i]));
+  }
+
   return (
     <Fragment>
-      Homepage
-      {/* <table>
+      <Table>
         <thead>
           <tr>
-            <th>S.N.</th>
+            <th>Image</th>
             <th>Name</th>
             <th>Phone</th>
             <th>Type</th>
             <th>WhatsApp Active</th>
           </tr>
         </thead>
-      </table> */}
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-        </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {profiles.map((profile, idx) => (
+            <tr key={idx}>
+              <td colSpan="1">
+                <img
+                  src={profile.fileUrl}
+                  style={{ width: "40px", height: "40px" }}
+                  alt={idx}
+                />
+              </td>
+              <td>
+                <Link to={`/edit-contact/${idx}`}>{profile.name}</Link>
+              </td>
+              <td>{profile.phone}</td>
+              <td>{profile.type}</td>
+              <td>
+                <input
+                  type="checkbox"
+                  checked={profile.isWhatsApp}
+                  readOnly
+                  disabled
+                />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </Fragment>
