@@ -16,7 +16,6 @@ function Contact({ data, type, contactId }) {
   const handleChange = (id, value) => {
     setFormData({ ...formData, [id]: value });
   };
-  console.log(formData);
 
   const localStorageSet = () => {
     if (formData.name !== "" && formData.phone !== "") {

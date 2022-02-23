@@ -13,7 +13,11 @@ function AddContact() {
     fileUrl: null,
   };
 
-  return <Contact data={formDataValues} type="add" />;
+  return (
+    <div className="card">
+      <Contact data={formDataValues} type="add" />
+    </div>
+  );
 }
 
 export default AddContact;

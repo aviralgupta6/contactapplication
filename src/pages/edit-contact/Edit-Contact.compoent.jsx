@@ -9,7 +9,11 @@ function EditContact() {
   const { id } = useParams();
   const profile = JSON.parse(localStorage.getItem(id));
   const formDataValues = profile;
-  return <Contact data={formDataValues} type="edit" contactId={id} />;
+  return (
+    <div className="card">
+      <Contact data={formDataValues} type="edit" contactId={id} />
+    </div>
+  );
 }
 
 export default EditContact;
